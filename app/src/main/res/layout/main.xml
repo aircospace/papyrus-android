@@ -20,8 +20,8 @@
             class="com.angelhack.android_application.fragment.DeviceListFragment"
             android:id="@+id/frag_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!-- Preview: layout=@layout/device_detail -->
+            android:layout_height="match_parent"
+            android:layout="@layout/device_detail">
         </fragment>
     </LinearLayout>
 </LinearLayout>

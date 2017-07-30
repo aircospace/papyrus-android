@@ -109,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
 
                     @Override
                     public void onClick(View v) {
-                        ((DeviceListFragment.DeviceActionListener) MainActivity.this).disconnect();
+
+                        disconnect();
                     }
                 });
 
@@ -128,9 +129,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
     }
 
     public void disconnect() {
-        final DeviceDetailFragment fragment = (DeviceDetailFragment) getFragmentManager()
-                .findFragmentById(R.id.frag_detail);
-        fragment.resetViews();
+        resetViews();
         Global.manager.removeGroup(Global.channel, new WifiP2pManager.ActionListener() {
 
             @Override
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
 
             @Override
             public void onSuccess() {
-                fragment.getView().setVisibility(View.GONE);
+                finish();
             }
 
         });
@@ -189,13 +188,14 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
 
             @Override
             public void onSuccess() {
-                // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
+                progressDialog.dismiss();
             }
 
             @Override
             public void onFailure(int reason) {
                 Toast.makeText(MainActivity.this, "Connect failed. Retry.",
                         Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
         // User has picked an image. Transfer it to group owner i.e peer using
         // FileTransferService.
         Uri uri = data.getData();
-        TextView statusText = (TextView) mContentView.findViewById(R.id.status_text);
+        TextView statusText = (TextView) findViewById(R.id.status_text);
         statusText.setText("Sending: " + uri);
         Log.d(WiFiDirectActivity.TAG, "Intent----------- " + uri);
         Intent serviceIntent = new Intent(MainActivity.this, FileTransferService.class);
