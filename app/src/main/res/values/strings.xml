@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">P2PAngelHack</string>
+    <string name="app_name">Papyros</string>
     <string name="enable_p2p_button">P2P On/Off</string>
     <string name="discover_peers_button">Pesquisar</string>
     <string name="connect_peer_button">Conectar</string>
@@ -20,5 +20,9 @@
     <string name="intro_1_desc">A qualquer momento mesmo sem internet.</string>
     <string name="intro_2_title">Segurança</string>
     <string name="intro_2_desc">Suas informações estarão seguras.</string>
+
+    <string name="send">Enviar</string>
+
+    <string name="message">Digite a mensagem</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WpsInfo;
 import android.net.wifi.p2p.WifiP2pConfig;
@@ -17,11 +18,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.angelhack.android_application.fragment.DeviceDetailFragment;
 import com.angelhack.android_application.fragment.DeviceListFragment;
+import com.angelhack.android_application.helper.MessageCustomAdapter;
+import com.angelhack.android_application.model.Message;
 import com.angelhack.android_application.service.FileTransferService;
 import com.angelhack.android_application.util.Global;
 
@@ -32,6 +37,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by matheuscatossi on 29/07/17.
@@ -50,6 +56,13 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
     private Button btn_connect;
     private Button btn_disconnect;
     private Button btn_start_client;
+
+    private MessageCustomAdapter messageCustomAdapter;
+    private ArrayList<Message> messages;
+    private ListView listViewMessages;
+
+    private Button btn_send;
+    private EditText ed_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
                    }
                });
 
-                connect(config);
+               connect(config);
             }
         });
 
@@ -126,6 +139,41 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
                         startActivityForResult(intent, CHOOSE_FILE_RESULT_CODE);
                     }
                 });
+
+        listViewMessages = (ListView) findViewById(R.id.list_messages);
+
+        messages = new ArrayList<Message>();
+        messageCustomAdapter = new MessageCustomAdapter(messages, this);
+
+        if (messageCustomAdapter != null) {
+            listViewMessages.setAdapter(messageCustomAdapter);
+        }
+
+        ed_message = (EditText) findViewById(R.id.ed_message);
+
+        btn_send = (Button) findViewById(R.id.btn_send);
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String message = ed_message.getText().toString();
+
+                if(message.length() < 1 || message.equals("")) {
+                    Toast.makeText(MainActivity.this, "Por favor, insira uma mensagem!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                messages.add(new Message("Papyros User", message, "client"));
+
+                messageCustomAdapter = new MessageCustomAdapter(messages, getBaseContext());
+
+                if (messageCustomAdapter != null) {
+                    listViewMessages.setAdapter(messageCustomAdapter);
+                }
+
+                ed_message.setText("");
+            }
+        });
     }
 
     public void disconnect() {
@@ -183,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
     }
 
 
-    public void connect(WifiP2pConfig config) {
+    public void connect(final WifiP2pConfig config) {
         Global.manager.connect(Global.channel, config, new WifiP2pManager.ActionListener() {
 
             @Override
@@ -202,9 +250,6 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        // User has picked an image. Transfer it to group owner i.e peer using
-        // FileTransferService.
         Uri uri = data.getData();
         TextView statusText = (TextView) findViewById(R.id.status_text);
         statusText.setText("Sending: " + uri);
@@ -225,6 +270,7 @@ public class MainActivity extends AppCompatActivity implements WifiP2pManager.Co
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+
         this.info = info;
 //        setVisibility(View.VISIBLE);
 
