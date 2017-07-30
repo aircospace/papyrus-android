@@ -2,13 +2,17 @@ package com.angelhack.android_application;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.Resource;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
@@ -27,10 +31,11 @@ public class IntroActivity extends AppIntro {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_1_title), getString(R.string.intro_1_desc), R.drawable.details_view, getResources().getColor(R.color.introColor1)));
-        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_2_title), getString(R.string.intro_2_desc), R.drawable.details_view, getResources().getColor(R.color.introColor2)));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_1_title), getString(R.string.intro_1_desc), R.drawable.chat, getResources().getColor(R.color.introColor1)));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.intro_2_title), getString(R.string.intro_2_desc), R.drawable.lock, getResources().getColor(R.color.introColor2)));
 
-        showSkipButton(false);
+        showSkipButton(true);
+
     }
 
     @Override
@@ -38,5 +43,4 @@ public class IntroActivity extends AppIntro {
         super.onDonePressed(currentFragment);
         startActivity(new Intent(this, WiFiDirectActivity.class));
     }
-
 }

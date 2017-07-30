@@ -6,10 +6,12 @@
         android:layout_height="match_parent"
         tools:context="com.angelhack.android_application.MainActivity"
         android:background="@drawable/details_view">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

@@ -33,12 +33,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.angelhack.android_application.broadcast.WiFiDirectBroadcastReceiver;
 import com.angelhack.android_application.fragment.DeviceDetailFragment;
 import com.angelhack.android_application.fragment.DeviceListFragment;
 import com.angelhack.android_application.util.Global;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 /**
  * Created by matheuscatossi on 29/07/17.
@@ -53,6 +56,8 @@ public class WiFiDirectActivity extends Activity implements ChannelListener {
 
     private final IntentFilter intentFilter = new IntentFilter();
     private BroadcastReceiver receiver = null;
+
+    private ImageView img_devices;
 
     public void setIsWifiP2pEnabled(boolean isWifiP2pEnabled) {
         this.isWifiP2pEnabled = isWifiP2pEnabled;
@@ -70,6 +75,10 @@ public class WiFiDirectActivity extends Activity implements ChannelListener {
 
         Global.manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         Global.channel = Global.manager.initialize(this, getMainLooper(), null);
+
+        img_devices = (ImageView) findViewById(R.id.img_devices);
+
+        Glide.with(this).load(R.drawable.devices).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).crossFade().into(img_devices);
     }
 
     /** register the BroadcastReceiver with the intent values to be matched */
