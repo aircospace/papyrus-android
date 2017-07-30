@@ -139,7 +139,7 @@
             android:layout_below="@id/list_messages"
             android:layout_margin="5dp"
             android:background="@color/colorPrimary"
-            android:padding="15dp"
+            android:padding="5dp"
             android:text="@string/send"
             android:textColor="@color/colorWhite" />
 
