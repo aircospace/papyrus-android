@@ -1,6 +1,6 @@
 // Copyright 2011 Google Inc. All Rights Reserved.
 
-package com.angelhack.android_application;
+package com.angelhack.android_application.service;
 
 import android.app.IntentService;
 import android.content.ContentResolver;
@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+
+import com.angelhack.android_application.WiFiDirectActivity;
+import com.angelhack.android_application.fragment.DeviceDetailFragment;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

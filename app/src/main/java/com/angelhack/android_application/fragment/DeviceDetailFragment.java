@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.angelhack.android_application;
+package com.angelhack.android_application.fragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -35,6 +35,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
+import com.angelhack.android_application.service.FileTransferService;
+import com.angelhack.android_application.R;
+import com.angelhack.android_application.WiFiDirectActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -75,8 +79,8 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
                 if (progressDialog != null && progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
-                progressDialog = ProgressDialog.show(getActivity(), "Press back to cancel",
-                        "Connecting to :" + device.deviceAddress, true, true
+                progressDialog = ProgressDialog.show(getActivity(), "Pressione voltar para cancelar",
+                        "Conectando ao :" + device.deviceAddress, true, true
 //                        new DialogInterface.OnCancelListener() {
 //
 //                            @Override

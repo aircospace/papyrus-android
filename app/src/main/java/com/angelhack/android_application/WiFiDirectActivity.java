@@ -25,7 +25,6 @@ import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.ActionListener;
-import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.ChannelListener;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -36,6 +35,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.angelhack.android_application.broadcast.WiFiDirectBroadcastReceiver;
+import com.angelhack.android_application.fragment.DeviceDetailFragment;
+import com.angelhack.android_application.fragment.DeviceListFragment;
 import com.angelhack.android_application.util.Global;
 
 /**

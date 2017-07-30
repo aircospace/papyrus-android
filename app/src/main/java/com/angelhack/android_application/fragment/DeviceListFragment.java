@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.angelhack.android_application;
+package com.angelhack.android_application.fragment;
 
 import android.app.ListFragment;
 import android.app.ProgressDialog;
@@ -33,6 +33,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.angelhack.android_application.MainActivity;
+import com.angelhack.android_application.R;
+import com.angelhack.android_application.WiFiDirectActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -187,7 +191,7 @@ public class DeviceListFragment extends ListFragment implements PeerListListener
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
-        progressDialog = ProgressDialog.show(getActivity(), "Press back to cancel", "finding peers", true,
+        progressDialog = ProgressDialog.show(getActivity(), "Pressione voltar para cancelar", "Procurando dispositivos", true,
                 true, new DialogInterface.OnCancelListener() {
 
                     @Override

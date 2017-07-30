@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.angelhack.android_application;
+package com.angelhack.android_application.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,6 +25,10 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
 import android.util.Log;
+
+import com.angelhack.android_application.R;
+import com.angelhack.android_application.WiFiDirectActivity;
+import com.angelhack.android_application.fragment.DeviceListFragment;
 
 /**
  * Created by matheuscatossi on 29/07/17.

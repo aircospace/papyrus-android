@@ -15,13 +15,14 @@ import android.os.Environment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.angelhack.android_application.fragment.DeviceDetailFragment;
+import com.angelhack.android_application.fragment.DeviceListFragment;
+import com.angelhack.android_application.service.FileTransferService;
 import com.angelhack.android_application.util.Global;
 
 import java.io.File;
