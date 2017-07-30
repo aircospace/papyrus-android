@@ -15,4 +15,12 @@
     <string name="group_owner_text"></string>
     <string name="label_me">Meu dispositivo</string>
     <string name="label_peers">Dispositivos disponíveis</string>
+
+    <string name="intro_1_title">Dinheiro</string>
+    <string name="intro_1_desc">Você acha que seu dinheiro está sendo gasto pelos politícos de forma certa?</string>
+    <string name="intro_2_title">Ciclo</string>
+    <string name="intro_2_desc">Você e seus amigos podem mudar o Brasil.</string>
+    <string name="intro_3_title">luppa</string>
+    <string name="intro_3_desc">A plataforma que oferece todas as suspeitas de irregularidades e quem decide o futuro disso é você!</string>
+
 </resources>
